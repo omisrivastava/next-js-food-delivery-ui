@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 
 type Props = {
   price: number;
-  // id: number;
+  id: number;
   options?: { title: string; additionalPrice: number }[];
 };
 
-const Price = ({ price, options }: Props) => {
+const Price = ({ price,id,options }: Props) => {
   const [total, setTotal] = useState(price);
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
@@ -19,7 +19,7 @@ const Price = ({ price, options }: Props) => {
   }, [quantity, selected, options, price]);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div key={id} className="flex flex-col gap-4">
       <h2 className="text-2xl font-bold">${total.toFixed(2)}</h2>
       {/* OPTIONS CONTAINER */}
       <div className="flex gap-4">
